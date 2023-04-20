@@ -1,0 +1,55 @@
+
+<div class="min-h-screen flex items-center flex-col justify-center">
+
+                        {% if error %}
+                            <div class="w-full max-w-xs mb-5 p-3 rounded-t bg-red-500 text-white rounded">{{ error }}</div>
+                        {% endif %}
+            <div class="bg-white rounded shadow w-full max-w-xs">
+
+                <div class="w-full">
+
+                    <form action="{% url 'home' %}" method="GET">
+                        <input class="w-full p-3 rounded-t border-b text-slate-700 outline-none" name="q" type="search" placeholder="Ara...">
+                    </form>
+                </div>
+
+                {% if q %}
+                <div class="p-4 flex flex-col">
+                <div class="font-bold text-xl">{{ city }}</div>
+                <div class="text-sm text-gray-500">{{ dt }}</div>
+                    <div class="mt-6 text-6xl self-center inline-flex items-center justify-center rounded-lg text-indigo-400 h-24 w-24">
+                        <img src="{{ icon_url }}" width="100" alt="">
+                    </div>
+
+                <div class="flex flex-row items-center justify-center mt-6">
+                    <div class="font-medium text-6xl">{{ temp }}°</div>
+                    <div class="flex flex-col items-center ml-6">
+                        <div>{{ description }}</div>
+                        <div class="mt-1">
+                            <span class="text-sm"><i class="far fa-long-arrow-up"></i></span>
+                            <span class="text-sm font-light text-gray-500">{{ max_temp }}°C</span>
+                        </div>
+                        <div>
+                            <span class="text-sm"><i class="far fa-long-arrow-down"></i></span>
+                            <span class="text-sm font-light text-gray-500">{{ min_temp }}°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-between mt-6">
+                    <div class="flex flex-col items-center">
+                        <div class="font-medium text-sm">Rüzgâr</div>
+                        <div class="text-sm text-gray-500">{{ wind }}k/h</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="font-medium text-sm">Nem</div>
+                        <div class="text-sm text-gray-500">{{ humidity }}%</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="font-medium text-sm">Hissedilen</div>
+                        <div class="text-sm text-gray-500">{{ feels_like }}°C</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+           {% endif %}
+</div>
